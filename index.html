@@ -280,6 +280,10 @@
   }
   .btn-loja:hover { background: var(--ouro-hover); }
 
+  /* ---------- Rolagem infinita ---------- */
+  .sentinela { height: 1px; }
+  .fim { text-align: center; color: var(--suave); font-size: 0.92rem; padding: 26px 0 4px; }
+
   /* ---------- Nada encontrado ---------- */
   .vazio { text-align: center; padding: 48px 16px; color: var(--suave); }
   .vazio h2 { font-family: var(--fonte-titulo); font-size: 1.3rem; color: var(--tinta); margin-bottom: 6px; }
@@ -339,6 +343,8 @@
 <main class="vitrine">
   <p class="contagem" id="contagem" aria-live="polite"></p>
   <ul class="grade" id="grade"></ul>
+  <div class="sentinela" id="sentinela" aria-hidden="true"></div>
+  <p class="fim" id="fim" hidden>Você viu todos os achadinhos por enquanto. Volte sempre!</p>
   <div class="vazio" id="vazio" hidden>
     <h2>Nenhum achadinho encontrado</h2>
     <p>Tente outra palavra ou volte para todas as categorias.</p>
@@ -389,23 +395,23 @@ const CONFIG = {
    ===================================================================== */
 const PRODUTOS = [
   {
-    titulo: "Cartão Presente Playstation Store Brasil",
-    preco: 60.00,
-    precoAntigo: ,
-    imagem: "https://http2.mlstatic.com/D_NQ_NP_2X_937904-MLA116552505887_082026-F.webp",
-    link: "https://meli.la/2fWs8uo",
-    categoria: "games",
+    titulo: "Fone de ouvido Bluetooth com cancelamento de ruído",
+    preco: 89.90,
+    precoAntigo: 149.90,
+    imagem: "",
+    link: "https://COLE-SEU-LINK-DE-AFILIADO-AQUI",
+    categoria: "Tech",
     selo: "Mais vendido",
     extra: "Frete grátis"
   },
   {
-    titulo: "Razer Gold Digital R$ 10 (Digital)",
-    preco: 10.00,
-    precoAntigo: ,
-    imagem: "https://http2.mlstatic.com/D_NQ_NP_2X_702121-MLA115098076686_082026-F.webp",
-    link: "https://meli.la/2TzUKY5",
-    categoria: "games",
-    selo: "2 mais vendido"
+    titulo: "Fritadeira elétrica Air Fryer 4 litros",
+    preco: 279.90,
+    precoAntigo: 399.00,
+    imagem: "",
+    link: "https://COLE-SEU-LINK-DE-AFILIADO-AQUI",
+    categoria: "Cozinha",
+    selo: "Oferta do dia"
   },
   {
     titulo: "Kit 6 potes herméticos de vidro com tampa",
@@ -867,14 +873,55 @@ const PRODUTOS = [
     return h("li", {}, h("article", { class: "card" }, foto, corpo));
   }
 
+  /* ---------- Rolagem infinita ----------
+     Os produtos aparecem em lotes: conforme a pessoa desce a página,
+     o próximo lote é carregado sozinho. Para mudar quantos aparecem
+     por vez, altere o número abaixo. */
+  const POR_LOTE = 12;
+  const sentinela = $("#sentinela");
+  let lista = [];
+  let mostrados = 0;
+  let observador = null;
+
+  function carregarMais() {
+    const lote = lista.slice(mostrados, mostrados + POR_LOTE);
+    if (!lote.length) return;
+    grade.append(...lote.map(criarCard));
+    mostrados += lote.length;
+    $("#fim").hidden = !(mostrados >= lista.length && lista.length > POR_LOTE);
+  }
+
+  // Reinicia a observação: se o marcador ainda estiver na tela, carrega o próximo lote
+  function verificarSentinela() {
+    if (!observador) return;
+    observador.unobserve(sentinela);
+    observador.observe(sentinela);
+  }
+
+  if ("IntersectionObserver" in window) {
+    observador = new IntersectionObserver((entradas) => {
+      if (entradas.some((e) => e.isIntersecting) && mostrados < lista.length) {
+        carregarMais();
+        verificarSentinela();
+      }
+    }, { rootMargin: "0px 0px 700px 0px" });
+    observador.observe(sentinela);
+  }
+
   function renderizar() {
     const termo = semAcento(estado.busca.trim());
-    const lista = PRODUTOS.filter((p) =>
+    lista = PRODUTOS.filter((p) =>
       (estado.categoria === "Todos" || p.categoria === estado.categoria) &&
       (!termo || semAcento(p.titulo).includes(termo))
     );
 
-    grade.replaceChildren(...lista.map(criarCard));
+    grade.replaceChildren();
+    mostrados = 0;
+    $("#fim").hidden = true;
+    // Navegadores muito antigos (sem IntersectionObserver) mostram tudo de uma vez
+    if (observador) { carregarMais(); verificarSentinela(); }
+    else { grade.append(...lista.map(criarCard)); mostrados = lista.length; }
+
     $("#vazio").hidden = lista.length > 0;
     $("#contagem").textContent = lista.length === 1 ? "1 achadinho" : lista.length + " achadinhos";
   }
