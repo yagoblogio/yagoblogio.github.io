@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garimpo Online | Blog de Achadinhos</title>
+
+<style>
+  /* ========================================
+     RESET E VARIÁVEIS
+  ======================================== */
+  :root {
+    --cor-fundo: #f7f7fb;
+    --cor-cartao: #ffffff;
+    --cor-texto: #22232b;
+    --cor-texto-suave: #5c5d6a;
+    --cor-destaque: #ff6a00;
+    --cor-destaque-hover: #e65f00;
+    --cor-vantagem-fundo: #fff4e8;
+    --cor-vantagem-borda: #ffb877;
+    --cor-borda: #e8e8f0;
+    --sombra: 0 4px 16px rgba(0, 0, 0, 0.06);
+    --sombra-hover: 0 10px 24px rgba(0, 0, 0, 0.10);
+    --raio: 16px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* ========================================
+     CABEÇALHO DO BLOG
+  ======================================== */
+  .cabecalho {
+    background-color: var(--cor-cartao);
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .cabecalho__logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--cor-texto);
+  }
+
+  .cabecalho__logo span {
+    color: var(--cor-destaque);
+  }
+
+  .cabecalho__subtitulo {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: var(--cor-texto-suave);
+  }
+
+  /* ========================================
+     CONTAINER PRINCIPAL
+  ======================================== */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  .titulo-secao {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  /* ========================================
+     LISTA DE PRODUTOS
+  ======================================== */
+  .lista-produtos {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* ========================================
+     CARTÃO DE PRODUTO
+  ======================================== */
+  .produto {
+    background-color: var(--cor-cartao);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    padding: 28px;
+    box-shadow: var(--sombra);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .produto:hover {
+    box-shadow: var(--sombra-hover);
+    transform: translateY(-2px);
+  }
+
+  /* Título grande do produto */
+  .produto__titulo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--cor-texto);
+    margin-bottom: 12px;
+  }
+
+  /* Parágrafo explicando como funciona */
+  .produto__descricao {
+    font-size: 1rem;
+    color: var(--cor-texto-suave);
+    margin-bottom: 18px;
+  }
+
+  /* Caixa de destaque - Maior Vantagem */
+  .produto__vantagem {
+    background-color: var(--cor-vantagem-fundo);
+    border-left: 4px solid var(--cor-vantagem-borda);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+  }
+
+  .produto__vantagem strong {
+    color: var(--cor-destaque-hover);
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  .produto__vantagem p {
+    font-size: 0.98rem;
+    color: var(--cor-texto);
+  }
+
+  /* Botão grande de compra */
+  .produto__botao {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 16px 20px;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+  }
+
+  .produto__botao:hover {
+    background-color: var(--cor-destaque-hover);
+  }
+
+  /* ========================================
+     RODAPÉ
+  ======================================== */
+  .rodape {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.85rem;
+    color: var(--cor-texto-suave);
+    border-top: 1px solid var(--cor-borda);
+  }
+
+  /* ========================================
+     RESPONSIVIDADE - COMPUTADOR (telas maiores)
+  ======================================== */
+  @media (min-width: 768px) {
+    .cabecalho__logo {
+      font-size: 2.2rem;
+    }
+
+    .titulo-secao {
+      font-size: 1.8rem;
+    }
+
+    .produto {
+      padding: 34px 38px;
+    }
+
+    .produto__titulo {
+      font-size: 1.6rem;
+    }
+
+    .produto__botao {
+      width: auto;
+      min-width: 320px;
+      margin: 0 auto;
+      padding: 16px 40px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ======================================
+       CABEÇALHO
+  ======================================= -->
+  <header class="cabecalho">
+    <div class="cabecalho__logo">Garimpo<span>Online</span></div>
+    <p class="cabecalho__subtitulo">Os melhores achadinhos do Mercado Livre, selecionados pra você</p>
+  </header>
+
+  <!-- ======================================
+       CONTEÚDO PRINCIPAL
+  ======================================= -->
+  <main class="container">
+    <h1 class="titulo-secao">Achadinhos da Semana</h1>
+
+    <div class="lista-produtos">
+
+      <!-- ============= PRODUTO 1 ============= -->
+      <article class="produto">
+        <h2 class="produto__titulo">DIGITE_O_NOME_DO_PRODUTO_1</h2>
+        <p class="produto__descricao">
+          DIGITE_AQUI_COMO_O_PRODUTO_FUNCIONA_1. Explique de forma simples o que ele faz e para quem ele é indicado.
+        </p>
+        <div class="produto__vantagem">
+          <strong>Maior Vantagem</strong>
+          <p>DIGITE_AQUI_A_MAIOR_VANTAGEM_DO_PRODUTO_1</p>
+        </div>
+        <a href="COLE_SEU_LINK_AQUI" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
+          Ver Produto no Mercado Livre
+        </a>
+      </article>
+
+      <!-- ============= PRODUTO 2 ============= -->
+      <article class="produto">
+        <h2 class="produto__titulo">DIGITE_O_NOME_DO_PRODUTO_2</h2>
+        <p class="produto__descricao">
+          DIGITE_AQUI_COMO_O_PRODUTO_FUNCIONA_2. Explique de forma simples o que ele faz e para quem ele é indicado.
+        </p>
+        <div class="produto__vantagem">
+          <strong>Maior Vantagem</strong>
+          <p>DIGITE_AQUI_A_MAIOR_VANTAGEM_DO_PRODUTO_2</p>
+        </div>
+        <a href="COLE_SEU_LINK_AQUI" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
+          Ver Produto no Mercado Livre
+        </a>
+      </article>
+
+      <!-- ============= PRODUTO 3 ============= -->
+      <article class="produto">
+        <h2 class="produto__titulo">DIGITE_O_NOME_DO_PRODUTO_3</h2>
+        <p class="produto__descricao">
+          DIGITE_AQUI_COMO_O_PRODUTO_FUNCIONA_3. Explique de forma simples o que ele faz e para quem ele é indicado.
+        </p>
+        <div class="produto__vantagem">
+          <strong>Maior Vantagem</strong>
+          <p>DIGITE_AQUI_A_MAIOR_VANTAGEM_DO_PRODUTO_3</p>
+        </div>
+        <a href="COLE_SEU_LINK_AQUI" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
+          Ver Produto no Mercado Livre
+        </a>
+      </article>
+
+      <!-- ============= PRODUTO 4 ============= -->
+      <article class="produto">
+        <h2 class="produto__titulo">DIGITE_O_NOME_DO_PRODUTO_4</h2>
+        <p class="produto__descricao">
+          DIGITE_AQUI_COMO_O_PRODUTO_FUNCIONA_4. Explique de forma simples o que ele faz e para quem ele é indicado.
+        </p>
+        <div class="produto__vantagem">
+          <strong>Maior Vantagem</strong>
+          <p>DIGITE_AQUI_A_MAIOR_VANTAGEM_DO_PRODUTO_4</p>
+        </div>
+        <a href="COLE_SEU_LINK_AQUI" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
+          Ver Produto no Mercado Livre
+        </a>
+      </article>
+
+      <!-- ============= PRODUTO 5 ============= -->
+      <article class="produto">
+        <h2 class="produto__titulo">DIGITE_O_NOME_DO_PRODUTO_5</h2>
+        <p class="produto__descricao">
+          DIGITE_AQUI_COMO_O_PRODUTO_FUNCIONA_5. Explique de forma simples o que ele faz e para quem ele é indicado.
+        </p>
+        <div class="produto__vantagem">
+          <strong>Maior Vantagem</strong>
+          <p>DIGITE_AQUI_A_MAIOR_VANTAGEM_DO_PRODUTO_5</p>
+        </div>
+        <a href="COLE_SEU_LINK_AQUI" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
+          Ver Produto no Mercado Livre
+        </a>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ======================================
+       RODAPÉ
+  ======================================= -->
+  <footer class="rodape">
+    <p>&copy; 2026 Garimpo Online — Como afiliado do Mercado Livre, ganhamos comissão sobre compras qualificadas.</p>
+  </footer>
+
+</body>
+</html>
