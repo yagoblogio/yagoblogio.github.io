@@ -2,352 +2,222 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Garimpo Online | Blog de Achadinhos</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Achadinhos da Shopee</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
-  /* ========================================
-     RESET E VARIÁVEIS
-  ======================================== */
-  :root {
-    --cor-fundo: #f7f7fb;
-    --cor-cartao: #ffffff;
-    --cor-texto: #22232b;
-    --cor-texto-suave: #5c5d6a;
-    --cor-destaque: #ff6a00;
-    --cor-destaque-hover: #e65f00;
-    --cor-vantagem-fundo: #fff4e8;
-    --cor-vantagem-borda: #ffb877;
-    --cor-borda: #e8e8f0;
-    --sombra: 0 4px 16px rgba(0, 0, 0, 0.06);
-    --sombra-hover: 0 10px 24px rgba(0, 0, 0, 0.10);
-    --raio: 16px;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    line-height: 1.6;
-  }
-
-  img {
-    max-width: 100%;
-    display: block;
-  }
-
-  /* ========================================
-     CABEÇALHO DO BLOG
-  ======================================== */
-  .cabecalho {
-    background-color: var(--cor-cartao);
-    border-bottom: 1px solid var(--cor-borda);
-    padding: 28px 20px;
-    text-align: center;
-  }
-
-  .cabecalho__logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--cor-texto);
-  }
-
-  .cabecalho__logo span {
-    color: var(--cor-destaque);
-  }
-
-  .cabecalho__subtitulo {
-    margin-top: 6px;
-    font-size: 0.95rem;
-    color: var(--cor-texto-suave);
-  }
-
-  /* ========================================
-     CONTAINER PRINCIPAL
-  ======================================== */
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px 80px;
-  }
-
-  .titulo-secao {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 28px;
-    text-align: center;
-  }
-
-  /* ========================================
-     LISTA DE PRODUTOS
-  ======================================== */
-  .lista-produtos {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
-
-  /* ========================================
-     CARTÃO DE PRODUTO
-  ======================================== */
-  .produto {
-    background-color: var(--cor-cartao);
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio);
-    padding: 28px;
-    box-shadow: var(--sombra);
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
-  }
-
-  .produto:hover {
-    box-shadow: var(--sombra-hover);
-    transform: translateY(-2px);
-  }
-
-  /* Imagem do produto */
-  .produto__imagem {
-    width: 50%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 18px;
-  }
-
-  /* Título grande do produto */
-  .produto__titulo {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--cor-texto);
-    margin-bottom: 12px;
-  }
-
-  /* Parágrafo explicando como funciona */
-  .produto__descricao {
-    font-size: 1rem;
-    color: var(--cor-texto-suave);
-    margin-bottom: 18px;
-  }
-
-  /* Caixa de destaque - Maior Vantagem */
-  .produto__vantagem {
-    background-color: var(--cor-vantagem-fundo);
-    border-left: 4px solid var(--cor-vantagem-borda);
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin-bottom: 22px;
-  }
-
-  .produto__vantagem strong {
-    color: var(--cor-destaque-hover);
-    display: block;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 4px;
-  }
-
-  .produto__vantagem p {
-    font-size: 0.98rem;
-    color: var(--cor-texto);
-  }
-
-  /* Botão grande de compra */
-  .produto__botao {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background-color: var(--cor-destaque);
-    color: #ffffff;
-    font-size: 1.05rem;
-    font-weight: 700;
-    text-decoration: none;
-    padding: 16px 20px;
-    border-radius: 12px;
-    transition: background-color 0.2s ease;
-  }
-
-  .produto__botao:hover {
-    background-color: var(--cor-destaque-hover);
-  }
-
-  /* ========================================
-     RODAPÉ
-  ======================================== */
-  .rodape {
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 0.85rem;
-    color: var(--cor-texto-suave);
-    border-top: 1px solid var(--cor-borda);
-  }
-
-  /* ========================================
-     RESPONSIVIDADE - COMPUTADOR (telas maiores)
-  ======================================== */
-  @media (min-width: 768px) {
-    .cabecalho__logo {
-      font-size: 2.2rem;
-    }
-
-    .titulo-secao {
-      font-size: 1.8rem;
-    }
-
-    .produto {
-      padding: 34px 38px;
-    }
-
-    .produto__titulo {
-      font-size: 1.6rem;
-    }
-
-    .produto__botao {
-      width: auto;
-      min-width: 320px;
-      margin: 0 auto;
-      padding: 16px 40px;
-    }
-  }
+  .chips::-webkit-scrollbar,.slides::-webkit-scrollbar{display:none}
+  .chips,.slides{scrollbar-width:none}
+  .slides{scroll-snap-type:x mandatory}
+  .slides>a{scroll-snap-align:center;flex:0 0 100%}
 </style>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-  <!-- ======================================
-       CABEÇALHO
-  ======================================= -->
-  <header class="cabecalho">
-    <div class="cabecalho__logo">Garimpo<span>Online</span></div>
-    <p class="cabecalho__subtitulo">Os melhores achadinhos do Mercado Livre, selecionados pra você</p>
-  </header>
-
-  <!-- ======================================
-       CONTEÚDO PRINCIPAL
-  ======================================= -->
-  <main class="container">
-    <h1 class="titulo-secao">Achadinhos da Semana de dias das ciranças</h1>
-
-    <div class="lista-produtos">
-
-      <!-- ============= PRODUTO 1 ============= -->
-      <article class="produto">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_812517-MLA99387085706_112025-F.webp" alt="DIGITE_O_NOME_DO_PRODUTO_1" class="produto__imagem">
-        <h2 class="produto__titulo">Hot Wheels Pista City Ultimate Garage 90cm Mattel HKX48</h2>
-        <p class="produto__descricao">
-      Hot Wheels Pista City Ultimate Garage Mattel HKX48
-EMOÇÃO E AVENTURA: compita em corridas, faça acrobacias e lute com um dragão no conjunto de jogos City Ultimate Garage de vários níveis do Hot Wheels™ City.
-CAR TRACK, onde o primeiro andar tem ótimos detalhes de jogos de atletismo, como mangueiras móveis, um lava-veículos com rolo de espuma, 
-mecanismos de desvio e conectores para outros conjuntos de jogos (vendidos separadamente).Peso da embalagem: 7,69 kg
-Dimensões da embalagem: 60x76x20cm
-Idade mínima: 4 anos
-Inclui 1 conjunto Hot Wheels™ City Ultimate Garage com 2 veículos Hot Wheels® na escala 1:64.
-Bateria necessária: Não
-Montagem necessária: Sim
-AVISO: Contém ou pode gerar peças pequenas que podem causar asfixia. </p>
-        <div class="produto__vantagem">
-          <strong>Maior Vantagem</strong>
-      <p>Explore todos os quatro níveis de corridas, acrobacias e histórias com Hot Wheels™ City Ultimate Garage. 
-            Cada nível da garagem inspira aventuras de jogos de pista, incluindo corridas paralelas, acrobacias em loop e uma batalha épica com um dragão que come veículos. 
-            O conjunto de jogos apresenta dois veículos Hot Wheels® e tem espaço de estacionamento suficiente para mais de 50 veículos na escala 1:64
-            Ele também se conecta a outros conjuntos de pistas de corrida para que as crianças possam construir sua cidade Hot Wheels™. Os conjuntos adicionais são vendidos separadamente. As cores e as decorações podem variar.</p>
-        </div>
-        <a href="https://meli.la/1aj3epy" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
-          Ver Produto no Mercado Livre
-        </a>
-      </article>
-
-      <!-- ============= PRODUTO 2 ============= -->
-      <article class="produto">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_818987-MLA100090072659_122025-F.webp" alt="DIGITE_O_NOME_DO_PRODUTO_2" class="produto__imagem">
-        <h2 class="produto__titulo">Massinha Modelar Infanti Play Doh Mini Sorveteria Brinquedo</h2>
-        <p class="produto__descricao">
-        O kit Hasbro Play Doh Minidentista e Fun Cut Fabrica é totalmente seguro para crianças. É atóxico e lavável, facilitando a limpeza após cada sessão de jogo. 
-          As crianças podem moldar, cortar e desenhar suas próprias criações Play-Doh, ajudando a desenvolver suas habilidades motoras finas e a coordenação olho-mão.
-Este kit Play-Doh inclui tudo o que as crianças precisam para criar suas próprias obras de arte. 
-          De uma minidentista a uma divertida fábrica de corte, as possibilidades são infinitas. As crianças podem brincar sozinhas ou com amigos, tornando este brinquedo perfeito para festas de aniversário, 
-          brincadeiras ou apenas para se divertir em casa.
-        </p>
-        <div class="produto__vantagem">
-          <strong>Maior Vantagem</strong>
-          <p>O kit Hasbro Play Doh Minidentista e Fun Cut Factory é mais do que apenas um brinquedo. É uma ferramenta de aprendizado que ajuda as crianças a explorar sua criatividade e 
-            desenvolver habilidades importantes enquanto se divertem. Não perca a oportunidade de proporcionar aos seus filhos horas de diversão e aprendizado com este incrível kit Play-Doh..</p>
-           </div>
-        <a href="https://meli.la/2EA1TXt" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
-          Ver Produto no Mercado Livre
-        </a>
-      </article>
-
-      <!-- ============= PRODUTO 3 ============= -->
-      <article class="produto">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_678645-MLA99447823800_112025-F.webp" alt="DIGITE_O_NOME_DO_PRODUTO_3" class="produto__imagem">
-        <h2 class="produto__titulo">LEGO Classic Maleta da Criatividade 10713; Brinquedo criativo para montar e imaginar; Maleta com peças coloridas para criar bichinhos, supercarros, casas e muito mais; Presente para crianças</h2>
-        <p class="produto__descricao">
-      Estimule o raciocínio das crianças com o fascinante e divertido LEGO® Classic – Maleta da Criatividade (10713).
-          Com 213 peças coloridas, as crianças poderão criar e recriar lindos personagens e cenários com esta maleta infantil.
-          Com jogos criativos e dinâmicos este incrível brinquedo de montar desenvolve o raciocínio• Recomendado a partir dos 4 anos.  </p>
-        <div class="produto__vantagem">
-          <strong>Maior Vantagem</strong>
-          <p>oção espacial e coordenação motora das crianças, além de proporcionar momentos de muita alegria e interatividade. A maleta criativa é a opção ideal de presente para crianças de 4 anos</p>
-        </div>
-        <a href="https://meli.la/1drKbxt" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
-          Ver Produto no Mercado Livre
-        </a>
-      </article>
-
-      <!-- ============= PRODUTO 4 ============= -->
-      <article class="produto">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_928127-MLA111393282693_052026-F.webp" alt="DIGITE_O_NOME_DO_PRODUTO_4" class="produto__imagem">
-        <h2 class="produto__titulo">Casa dos Sonhos da Barbie conjunto de brinquedos Com Piscina E Acessórios Com 2 Andares Para Crianças A Partir De 3 Anos Casa da Barbie</h2>
-        <p class="produto__descricao">
-        A Barbie Casa Dreamland com escorregador oferece um mundo de possibilidades criativas para o brincar diário. 
-          Este modelo colorido foi desenhado para estimular a imaginação das crianças a partir dos três anos de idade. A estrutura robusta garante estabilidade durante as brincadeiras mais animadas.
-O design inclui uma charmosa área com escorregador que permite que as bonecas interajam com diferentes espaços da casa.
-          O conjunto possui dimensões ideais para integrar facilmente o ambiente doméstico de diversão. A montagem é prática e não necessita de pilhas ou sistemas eletrônicos para funcionar.</p>
-        <div class="produto__vantagem">
-          <strong>Maior Vantagem</strong>
-          <p>Esta casa permite que o universo das bonecas seja expandido com diversos acessórios e móveis de acordo com a preferência de cada criança.
-            A versatilidade do modelo Dreamland proporciona horas de entretenimento. É uma escolha que combina funcionalidade e diversão em um único item para momentos inesquecíveis.</p>
-        </div>
-        <a href="https://meli.la/1gUZHMj" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
-          Ver Produto no Mercado Livre
-        </a>
-      </article>
-
-      <!-- ============= PRODUTO 5 ============= -->
-      <article class="produto">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_937151-MLA99932630017_112025-F.webp" alt="DIGITE_O_NOME_DO_PRODUTO_5" class="produto__imagem">
-        <h2 class="produto__titulo">Galápagos Dobble Jogo De Cartas DOB101</h2>
-        <p class="produto__descricao">
-          O Dobble Ecosleeve Jogo De Cartas Galápagos é um jogo de cartas divertido e desafiador para todas as idades. 
-          Com um modelo alfanumérico DOB101, é perfeito para jogar em família ou com amigos. Com uma altura de 14", comprimento de 13" e largura de 8", é compacto e fácil de transportar.
-Este jogo de cartas não é dobrável nem magnético, mas sua nova versão traz uma experiência ainda mais emocionante. 
-          Com uma quantidade mínima de jogadores de 2 e idade mínima recomendada de 6 anos, é perfeito para reunir todos ao redor da mesa.
-O Dobble Ecosleeve Jogo De Cartas Galápagos é novo e está em perfeitas condições. Com o MPN 1, é um produto de qualidade garantida.
-          Apesar de não ter aplicação transferível, luz ou som, oferece horas de diversão e entretenimento</p>
-        <div class="produto__vantagem">
-          <strong>Maior Vantagem</strong>
-          <p>ão perca a oportunidade de adquirir este incrível jogo de cartas. Compre agora e desafie seus amigos para uma partida emocionante de Dobble Ecosleeve Jogo De Cartas Galápagos.
-Traga seus amigos, familiares e até mesmo seus companheiros de aventura e junte-se a nós na Taverna Real. Uma vez aqui, você se torna parte de nossa família,
-            e estamos ansiosos para receber você com os braços abertos.</p>
-        </div>
-        <a href="https://meli.la/1F7PZ13" class="produto__botao" target="_blank" rel="noopener noreferrer nofollow sponsored">
-          Ver Produto no Mercado Livre
-        </a>
-      </article>
-
+<!-- CABEÇALHO -->
+<header class="sticky top-0 z-20 bg-white shadow-sm">
+  <div class="max-w-5xl mx-auto px-3 pt-3 pb-2">
+    <div class="flex items-center gap-3">
+      <!-- COLE AQUI O LINK DA SUA FOTO/LOGO no src -->
+      <img id="logo" src="https://picsum.photos/seed/logo/100/100" alt="Logo" class="w-11 h-11 rounded-full object-cover border-2 border-orange-500">
+      <h1 class="flex-1 text-lg font-extrabold text-orange-500 leading-tight">Achadinhos da Shopee</h1>
+      <a href="https://instagram.com/garimponline.oficial" target="_blank" rel="noopener"
+         class="flex items-center gap-1 bg-gradient-to-r from-pink-500 to-orange-400 text-white text-xs font-bold px-3 py-2 rounded-full">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        Instagram
+      </a>
     </div>
-  </main>
+    <input id="busca" type="search" placeholder="Buscar produto..."
+      class="mt-3 w-full bg-gray-100 rounded-full px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-orange-400">
+  </div>
+  <nav id="chips" class="chips flex gap-2 overflow-x-auto px-3 pb-3 max-w-5xl mx-auto"></nav>
+</header>
 
-  <!-- ======================================
-       RODAPÉ
-  ======================================= -->
-  <footer class="rodape">
-    <p>&copy; 2026 Garimpo Online — Como afiliado do Mercado Livre, ganhamos comissão sobre compras qualificadas.</p>
-  </footer>
+<main class="max-w-5xl mx-auto px-3 py-3">
 
+  <!-- ESPAÇO PARA 5 IMAGENS NO INÍCIO (carrossel) -->
+  <section id="banners" class="mb-4">
+    <div id="slides" class="slides flex overflow-x-auto rounded-2xl"></div>
+    <div id="dots" class="flex justify-center gap-1.5 mt-2"></div>
+  </section>
+
+  <div id="conteudo"></div>
+</main>
+
+<footer class="text-center text-xs text-gray-400 py-6">Links de afiliado Shopee · @garimponline.oficial</footer>
+
+<script>
+/* ====================================================================
+   COMO EDITAR (é só mexer nas listas abaixo):
+
+   1) BANNERS (5 imagens do início): troque o endereço em "foto" pela
+      sua imagem e, se quiser, o "link" para onde ela leva.
+
+   2) PRODUTOS: cada linha é um produto. Troque:
+        nome      -> nome curto do produto
+        categoria -> "Casa e Cozinha", "Eletrônicos", "Beleza" ou "Ofertas"
+                     (escreva igualzinho; para criar categoria nova, é só
+                      usar um nome novo)
+        preco     -> preço que aparece em destaque
+        foto      -> link da foto quadrada do produto
+        link      -> SEU link de afiliado da Shopee
+      Para adicionar, copie uma linha inteira e cole embaixo.
+   ==================================================================== */
+
+const banners = [
+  { foto: "https://picsum.photos/seed/banner1/900/450", link: "https://shopee.com.br/" },
+  { foto: "https://picsum.photos/seed/banner2/900/450", link: "https://shopee.com.br/" },
+  { foto: "https://picsum.photos/seed/banner3/900/450", link: "https://shopee.com.br/" },
+  { foto: "https://picsum.photos/seed/banner4/900/450", link: "https://shopee.com.br/" },
+  { foto: "https://picsum.photos/seed/banner5/900/450", link: "https://shopee.com.br/" }
+];
+
+const L = "https://shopee.com.br/COLE-SEU-LINK-AQUI";
+const produtos = [
+  // ---------- CASA E COZINHA ----------
+  { nome: "Jogo de Panelas Antiaderente 5 Peças", categoria: "Casa e Cozinha", preco: "R$ 189,90", foto: "https://picsum.photos/seed/casa1/400/400", link: L },
+  { nome: "Organizador de Geladeira", categoria: "Casa e Cozinha", preco: "R$ 24,90", foto: "https://picsum.photos/seed/casa2/400/400", link: L },
+  { nome: "Kit Potes Herméticos 10un", categoria: "Casa e Cozinha", preco: "R$ 59,90", foto: "https://picsum.photos/seed/casa3/400/400", link: L },
+  { nome: "Escorredor de Louça Inox", categoria: "Casa e Cozinha", preco: "R$ 79,90", foto: "https://picsum.photos/seed/casa4/400/400", link: L },
+  { nome: "Tábua de Corte de Bambu", categoria: "Casa e Cozinha", preco: "R$ 34,90", foto: "https://picsum.photos/seed/casa5/400/400", link: L },
+  { nome: "Garrafa Térmica 1L", categoria: "Casa e Cozinha", preco: "R$ 49,90", foto: "https://picsum.photos/seed/casa6/400/400", link: L },
+  { nome: "Luminária LED de Mesa", categoria: "Casa e Cozinha", preco: "R$ 39,90", foto: "https://picsum.photos/seed/casa7/400/400", link: L },
+  { nome: "Porta Temperos Giratório", categoria: "Casa e Cozinha", preco: "R$ 44,90", foto: "https://picsum.photos/seed/casa8/400/400", link: L },
+  { nome: "Mop Giratório com Balde", categoria: "Casa e Cozinha", preco: "R$ 99,90", foto: "https://picsum.photos/seed/casa9/400/400", link: L },
+  { nome: "Conjunto de Facas Inox", categoria: "Casa e Cozinha", preco: "R$ 64,90", foto: "https://picsum.photos/seed/casa10/400/400", link: L },
+  { nome: "Cesto de Roupa Dobrável", categoria: "Casa e Cozinha", preco: "R$ 37,90", foto: "https://picsum.photos/seed/casa11/400/400", link: L },
+  { nome: "Jogo de Toalhas de Algodão", categoria: "Casa e Cozinha", preco: "R$ 89,90", foto: "https://picsum.photos/seed/casa12/400/400", link: L },
+  { nome: "Air Fryer 4L", categoria: "Casa e Cozinha", preco: "R$ 299,90", foto: "https://picsum.photos/seed/casa13/400/400", link: L },
+  { nome: "Fruteira de Metal 2 Andares", categoria: "Casa e Cozinha", preco: "R$ 54,90", foto: "https://picsum.photos/seed/casa14/400/400", link: L },
+
+  // ---------- ELETRÔNICOS ----------
+  { nome: "Fone Bluetooth TWS", categoria: "Eletrônicos", preco: "R$ 69,90", foto: "https://picsum.photos/seed/eletro1/400/400", link: L },
+  { nome: "Carregador Turbo 20W", categoria: "Eletrônicos", preco: "R$ 39,90", foto: "https://picsum.photos/seed/eletro2/400/400", link: L },
+  { nome: "Cabo USB-C Reforçado 2m", categoria: "Eletrônicos", preco: "R$ 19,90", foto: "https://picsum.photos/seed/eletro3/400/400", link: L },
+  { nome: "Smartwatch Fitness", categoria: "Eletrônicos", preco: "R$ 129,90", foto: "https://picsum.photos/seed/eletro4/400/400", link: L },
+  { nome: "Caixa de Som Portátil", categoria: "Eletrônicos", preco: "R$ 84,90", foto: "https://picsum.photos/seed/eletro5/400/400", link: L },
+  { nome: "Power Bank 10000mAh", categoria: "Eletrônicos", preco: "R$ 89,90", foto: "https://picsum.photos/seed/eletro6/400/400", link: L },
+  { nome: "Suporte de Celular Veicular", categoria: "Eletrônicos", preco: "R$ 29,90", foto: "https://picsum.photos/seed/eletro7/400/400", link: L },
+  { nome: "Mouse Sem Fio", categoria: "Eletrônicos", preco: "R$ 34,90", foto: "https://picsum.photos/seed/eletro8/400/400", link: L },
+  { nome: "Teclado Bluetooth Compacto", categoria: "Eletrônicos", preco: "R$ 99,90", foto: "https://picsum.photos/seed/eletro9/400/400", link: L },
+  { nome: "Ring Light 26cm", categoria: "Eletrônicos", preco: "R$ 74,90", foto: "https://picsum.photos/seed/eletro10/400/400", link: L },
+  { nome: "Webcam Full HD", categoria: "Eletrônicos", preco: "R$ 109,90", foto: "https://picsum.photos/seed/eletro11/400/400", link: L },
+  { nome: "Hub USB 4 Portas", categoria: "Eletrônicos", preco: "R$ 27,90", foto: "https://picsum.photos/seed/eletro12/400/400", link: L },
+  { nome: "Lâmpada Smart Wi-Fi", categoria: "Eletrônicos", preco: "R$ 32,90", foto: "https://picsum.photos/seed/eletro13/400/400", link: L },
+  { nome: "Película 3D Premium", categoria: "Eletrônicos", preco: "R$ 14,90", foto: "https://picsum.photos/seed/eletro14/400/400", link: L },
+
+  // ---------- BELEZA ----------
+  { nome: "Kit Skincare Facial", categoria: "Beleza", preco: "R$ 79,90", foto: "https://picsum.photos/seed/beleza1/400/400", link: L },
+  { nome: "Protetor Solar FPS 50", categoria: "Beleza", preco: "R$ 29,90", foto: "https://picsum.photos/seed/beleza2/400/400", link: L },
+  { nome: "Secador de Cabelo Compacto", categoria: "Beleza", preco: "R$ 89,90", foto: "https://picsum.photos/seed/beleza3/400/400", link: L },
+  { nome: "Paleta de Sombras 18 Cores", categoria: "Beleza", preco: "R$ 34,90", foto: "https://picsum.photos/seed/beleza4/400/400", link: L },
+  { nome: "Esponja de Maquiagem 5un", categoria: "Beleza", preco: "R$ 12,90", foto: "https://picsum.photos/seed/beleza5/400/400", link: L },
+  { nome: "Máscara Facial Hidratante", categoria: "Beleza", preco: "R$ 9,90", foto: "https://picsum.photos/seed/beleza6/400/400", link: L },
+  { nome: "Escova Alisadora Elétrica", categoria: "Beleza", preco: "R$ 119,90", foto: "https://picsum.photos/seed/beleza7/400/400", link: L },
+  { nome: "Batom Matte Longa Duração", categoria: "Beleza", preco: "R$ 16,90", foto: "https://picsum.photos/seed/beleza8/400/400", link: L },
+  { nome: "Sérum Vitamina C", categoria: "Beleza", preco: "R$ 42,90", foto: "https://picsum.photos/seed/beleza9/400/400", link: L },
+  { nome: "Kit Pincéis 12 Peças", categoria: "Beleza", preco: "R$ 39,90", foto: "https://picsum.photos/seed/beleza10/400/400", link: L },
+  { nome: "Hidratante Corporal 400ml", categoria: "Beleza", preco: "R$ 27,90", foto: "https://picsum.photos/seed/beleza11/400/400", link: L },
+  { nome: "Modelador de Cachos", categoria: "Beleza", preco: "R$ 94,90", foto: "https://picsum.photos/seed/beleza12/400/400", link: L },
+  { nome: "Kit Esmaltes 6 Cores", categoria: "Beleza", preco: "R$ 22,90", foto: "https://picsum.photos/seed/beleza13/400/400", link: L },
+  { nome: "Rolo Massageador Facial", categoria: "Beleza", preco: "R$ 19,90", foto: "https://picsum.photos/seed/beleza14/400/400", link: L },
+
+  // ---------- OFERTAS ----------
+  { nome: "Kit 3 Camisetas Básicas", categoria: "Ofertas", preco: "R$ 59,90", foto: "https://picsum.photos/seed/oferta1/400/400", link: L },
+  { nome: "Mochila Impermeável", categoria: "Ofertas", preco: "R$ 69,90", foto: "https://picsum.photos/seed/oferta2/400/400", link: L },
+  { nome: "Tênis Casual Unissex", categoria: "Ofertas", preco: "R$ 99,90", foto: "https://picsum.photos/seed/oferta3/400/400", link: L },
+  { nome: "Relógio Digital Esportivo", categoria: "Ofertas", preco: "R$ 49,90", foto: "https://picsum.photos/seed/oferta4/400/400", link: L },
+  { nome: "Óculos de Sol Polarizado", categoria: "Ofertas", preco: "R$ 34,90", foto: "https://picsum.photos/seed/oferta5/400/400", link: L },
+  { nome: "Bolsa Transversal", categoria: "Ofertas", preco: "R$ 44,90", foto: "https://picsum.photos/seed/oferta6/400/400", link: L },
+  { nome: "Kit Meias 10 Pares", categoria: "Ofertas", preco: "R$ 24,90", foto: "https://picsum.photos/seed/oferta7/400/400", link: L },
+  { nome: "Garrafa Squeeze 2L", categoria: "Ofertas", preco: "R$ 19,90", foto: "https://picsum.photos/seed/oferta8/400/400", link: L },
+  { nome: "Fone com Fio P2", categoria: "Ofertas", preco: "R$ 9,90", foto: "https://picsum.photos/seed/oferta9/400/400", link: L },
+  { nome: "Capa de Celular Anti-impacto", categoria: "Ofertas", preco: "R$ 12,90", foto: "https://picsum.photos/seed/oferta10/400/400", link: L },
+  { nome: "Organizador de Mala 6un", categoria: "Ofertas", preco: "R$ 29,90", foto: "https://picsum.photos/seed/oferta11/400/400", link: L },
+  { nome: "Boné Aba Curva", categoria: "Ofertas", preco: "R$ 27,90", foto: "https://picsum.photos/seed/oferta12/400/400", link: L },
+  { nome: "Kit Organizador de Cabos", categoria: "Ofertas", preco: "R$ 11,90", foto: "https://picsum.photos/seed/oferta13/400/400", link: L },
+  { nome: "Chinelo Slide Confortável", categoria: "Ofertas", preco: "R$ 21,90", foto: "https://picsum.photos/seed/oferta14/400/400", link: L }
+];
+
+/* ===================== FUNCIONAMENTO (não precisa mexer) ===================== */
+const categorias = [...new Set(produtos.map(p => p.categoria))];
+let catAtual = "Todos", termo = "";
+const $ = id => document.getElementById(id);
+
+function card(p) {
+  return `<div class="bg-white rounded-xl shadow-sm overflow-hidden flex flex-col">
+    <img src="${p.foto}" alt="${p.nome}" loading="lazy" class="w-full aspect-square object-cover bg-gray-100">
+    <div class="p-2 flex flex-col flex-1">
+      <h3 class="text-sm leading-snug min-h-[2.5rem]">${p.nome}</h3>
+      <p class="text-lg font-extrabold text-orange-500 mt-1">${p.preco}</p>
+      <a href="${p.link}" target="_blank" rel="noopener sponsored"
+         class="mt-2 block text-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold py-2 rounded-lg">Ver na Shopee</a>
+    </div></div>`;
+}
+const grade = lista => `<div class="grid grid-cols-2 md:grid-cols-4 gap-3">${lista.map(card).join("")}</div>`;
+
+function chips() {
+  $("chips").innerHTML = ["Todos", ...categorias].map(c =>
+    `<button data-cat="${c}" class="shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border ${c === catAtual ? "bg-orange-500 text-white border-orange-500" : "bg-white text-gray-600 border-gray-300"}">${c}</button>`
+  ).join("");
+}
+
+function irPara(cat) {
+  catAtual = cat; chips(); render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function render() {
+  const el = $("conteudo");
+  const buscando = termo.trim() !== "";
+  $("banners").style.display = (catAtual === "Todos" && !buscando) ? "block" : "none";
+
+  if (buscando) {
+    const t = termo.trim().toLowerCase();
+    const achados = produtos.filter(p => p.nome.toLowerCase().includes(t) && (catAtual === "Todos" || p.categoria === catAtual));
+    el.innerHTML = achados.length ? grade(achados) : `<p class="text-center text-gray-500 py-16">Nenhum produto encontrado 😕</p>`;
+    return;
+  }
+  if (catAtual === "Todos") {
+    el.innerHTML = categorias.map(c => `
+      <section class="mb-8">
+        <h2 class="text-lg font-extrabold mb-3 border-l-4 border-orange-500 pl-2">${c}</h2>
+        ${grade(produtos.filter(p => p.categoria === c).slice(0, 4))}
+        <button data-cat="${c}" class="mt-3 w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl shadow">Ver mais produtos de ${c} →</button>
+      </section>`).join("");
+  } else {
+    el.innerHTML = `
+      <button data-cat="Todos" class="mb-3 bg-white border border-orange-500 text-orange-500 font-bold px-4 py-2 rounded-full text-sm">← Voltar para Todos</button>
+      <h2 class="text-lg font-extrabold mb-3 border-l-4 border-orange-500 pl-2">${catAtual}</h2>
+      ${grade(produtos.filter(p => p.categoria === catAtual))}`;
+  }
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-cat]");
+  if (b) irPara(b.dataset.cat);
+});
+$("busca").addEventListener("input", e => { termo = e.target.value; render(); });
+
+/* Carrossel das 5 imagens do início */
+$("slides").innerHTML = banners.map(b =>
+  `<a href="${b.link}" target="_blank" rel="noopener sponsored"><img src="${b.foto}" alt="Banner" class="w-full aspect-[2/1] object-cover"></a>`).join("");
+$("dots").innerHTML = banners.map(() => `<span class="w-2 h-2 rounded-full bg-gray-300"></span>`).join("");
+let slideAtual = 0;
+function marcarDots() {
+  [...$("dots").children].forEach((d, i) => d.className = `w-2 h-2 rounded-full ${i === slideAtual ? "bg-orange-500" : "bg-gray-300"}`);
+}
+$("slides").addEventListener("scroll", () => {
+  slideAtual = Math.round($("slides").scrollLeft / $("slides").clientWidth); marcarDots();
+});
+setInterval(() => {
+  const s = $("slides");
+  slideAtual = (slideAtual + 1) % banners.length;
+  s.scrollTo({ left: slideAtual * s.clientWidth, behavior: "smooth" });
+}, 4000);
+marcarDots();
+
+chips(); render();
+</script>
 </body>
 </html>
